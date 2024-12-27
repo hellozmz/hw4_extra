@@ -338,6 +338,11 @@ class Transformer(Module):
         ])
         ### END YOUR SOLUTION
 
+    def create_timestamp_tensor(self, batch_size: int, seq_len: int):
+        ts = np.arange(seq_len).reshape(seq_len, 1)
+        ts = ndarray.array(ts, device=self.device).broadcast_to((seq_len, batch_size))
+        return Tensor(ts, device=self.device, dtype=self.dtype)
+
     def forward(
         self,
         x, h=None

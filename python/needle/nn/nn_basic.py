@@ -238,7 +238,7 @@ class Dropout(Module):
     def forward(self, x: Tensor) -> Tensor:
         ### BEGIN YOUR SOLUTION
         if self.training:
-            drop_matrix = init.randb(*x.shape, p=(1-self.p))
+            drop_matrix = init.randb(*x.shape, p=(1-self.p), device=x.device, dtype=x.dtype)
             return x * drop_matrix / (1-self.p)
         else:
             # 漏加了这一句，debug了一下午。原因还没理解。
