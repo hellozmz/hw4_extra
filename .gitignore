@@ -12,3 +12,6 @@ python/needle/ops/__pycache__/
 tests/hw3/__pycache__/
 *__pycache__
 data/ptb
+needle.egg-info/
+python/dist/
+*ndarray_backend_cpu.cpython-38-x86_64-linux-gnu.so
