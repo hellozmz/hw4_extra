@@ -3,7 +3,7 @@ import math
 from functools import reduce
 import numpy as np
 from . import ndarray_backend_numpy
-from . import ndarray_backend_cpu
+# from . import ndarray_backend_cpu
 
 
 # math.prod not in Python 3.7
@@ -73,7 +73,14 @@ def cpu_numpy():
 
 def cpu():
     """Return cpu device"""
-    return BackendDevice("cpu", ndarray_backend_cpu)
+    # return BackendDevice("cpu", ndarray_backend_cpu)
+    try:
+        from . import ndarray_backend_cpu
+
+        return BackendDevice("cpu", ndarray_backend_cpu)
+    except ImportError:
+        return BackendDevice("cpu", None)
+
 
 
 def default_device():
